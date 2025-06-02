@@ -1,0 +1,9 @@
+# Node
+reto-practicas-backend/node_modules
+reto-practicas-backend/.env
+
+# Angular
+reto-practicas-frontend/node_modules
+reto-practicas-frontend/dist
+reto-practicas-frontend/.env
+
