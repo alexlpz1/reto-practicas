@@ -1,0 +1,15 @@
+<div class="perfil-container">
+  <h2>Perfil de Usuario</h2>
+
+  <div class="profile-info">
+    <p><strong>Nombre Completo:</strong> {{ usuario.nombre }}</p>
+    <p><strong>Usuario:</strong> {{ usuario.username }}</p>
+    <p><strong>Email:</strong> {{ usuario.email }}</p>
+    <p><strong>Fecha de Registro:</strong> {{ usuario.fechaRegistro }}</p>
+  </div>
+
+  <div class="actions">
+    <button (click)="editarPerfil()">Editar Perfil</button>
+    <button (click)="logout()">Cerrar Sesión</button>
+  </div>
+</div>

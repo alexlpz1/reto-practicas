@@ -1,0 +1,24 @@
+<div class="dni-form" *ngIf="!mostrarTickets">
+  <h2>Consulta tus tickets</h2>
+  <input [(ngModel)]="dni" placeholder="Introduce tu DNI" />
+  <button (click)="consultarTickets()">Buscar tickets</button>
+</div>
+
+<div *ngIf="mostrarTickets">
+  <h2>Mis Tickets</h2>
+  <div *ngFor="let t of tickets" class="ticket">
+    <p><strong>{{ t.nombre }}</strong> | {{ t.fecha }} {{ t.hora }} | DNI: {{ t.dni }}</p>
+    <p>{{ t.mensaje }}</p>
+    <p><strong>Empresa:</strong> {{ t.Empresa.nombre }}</p>
+    <button (click)="borrarTicket(t.id)">🗑 Borrar</button>
+  </div><br>
+  <button style="padding: 8px 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;" (click)="mostrarTickets = false">Buscar otro DNI</button>
+  <br><br>
+</div>

@@ -1,0 +1,183 @@
+.usuario-panel-container {
+  max-width: 430px;
+  margin: 30px auto;
+  padding: 2.2rem 2rem 2rem 2rem;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.66);
+  box-shadow: 0 10px 40px 0 rgba(60, 72, 120, 0.14), 0 1.5px 8px 0 rgba(60,72,120,0.09);
+  backdrop-filter: blur(7px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+}
+
+.usuario-panel-container h2 {
+  font-size: 1.7rem;
+  color: #2443a0;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+  position: relative;
+}
+
+.usuario-panel-container h2::after {
+  content: '';
+  display: block;
+  width: 55px;
+  margin: 0.6rem auto 0 auto;
+  border-bottom: 3px solid #b8c7fa;
+  border-radius: 1px;
+  opacity: 0.8;
+}
+
+.usuario-info {
+  background: rgba(240, 247, 255, 0.76);
+  border-radius: 1.1rem;
+  padding: 1.1rem 1.5rem;
+  margin: 1.5rem 0 1.1rem 0;
+  box-shadow: 0 2px 16px 0 rgba(82,102,170,0.09);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  font-size: 1.08rem;
+}
+
+.usuario-info p {
+  margin: 0;
+  color: #253a60;
+}
+
+.usuario-info strong {
+  color: #5670e1;
+  font-weight: 600;
+}
+
+.cambiar-estado {
+  margin-top: 1.2rem;
+  background: rgba(234, 241, 255, 0.72);
+  border-radius: 0.9rem;
+  padding: 1.1rem 1rem 0.8rem 1rem;
+  box-shadow: 0 1px 7px 0 rgba(122,152,221,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: stretch;
+}
+
+.cambiar-estado label {
+  font-size: 1rem;
+  color: #4668b7;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.01em;
+}
+
+.cambiar-estado select {
+  padding: 0.7rem 1.5rem 0.7rem 0.9rem;
+  border-radius: 1.1rem;
+  border: 1.5px solid #b5c9ef;
+  background: #e8eefb url('data:image/svg+xml;utf8,<svg fill="none" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke="%234668b7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat right 0.9em center/1.3em;
+  font-size: 1.08rem;
+  color: #314075;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.18s, box-shadow 0.18s;
+  box-shadow: 0 1px 5px 0 rgba(60, 72, 120, 0.04);
+  appearance: none;
+}
+
+.cambiar-estado select:focus {
+  border: 1.5px solid #4668b7;
+  background-color: #f1f6ff;
+}
+
+.change-pass-title {
+  margin: 2.2rem 0 0.7rem 0;
+  font-size: 1.19rem;
+  font-weight: 700;
+  color: #295cc9;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.change-pass-form {
+  background: rgba(239, 246, 255, 0.87);
+  border-radius: 1.1rem;
+  box-shadow: 0 1.5px 9px 0 rgba(100,120,200,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: stretch;
+  padding: 1.2rem 1.3rem 1.1rem 1.3rem;
+  margin-bottom: 0.7rem;
+}
+
+.input-group {
+  width: 100%;
+  display: flex;
+}
+
+.change-pass-form input[type="password"] {
+  flex: 1;
+  padding: 0.7rem 1.1rem;
+  border-radius: 1.1rem;
+  border: 1.5px solid #b5c9ef;
+  background: #f3f7fd;
+  font-size: 1.08rem;
+  color: #28365e;
+  font-family: inherit;
+  outline: none;
+  box-shadow: 0 1px 5px 0 rgba(60, 72, 120, 0.06);
+  transition: border 0.18s, box-shadow 0.18s;
+}
+
+.change-pass-form input[type="password"]:focus {
+  border: 1.5px solid #3866d0;
+  background: #e6f0ff;
+}
+
+.btn-change-pass {
+  padding: 0.7rem 2.1rem;
+  border-radius: 1.1rem;
+  border: none;
+  background: #4668b7;
+  color: #fff;
+  font-size: 1.06rem;
+  font-weight: 700;
+  box-shadow: 0 2px 9px 0 rgba(60,72,120,0.08);
+  cursor: pointer;
+  transition: background 0.18s, transform 0.13s;
+  outline: none;
+}
+
+.btn-change-pass:disabled {
+  background: #b5c9ef;
+  color: #d3dbe6;
+  cursor: not-allowed;
+}
+
+.btn-change-pass:hover:enabled, .btn-change-pass:focus:enabled {
+  background: #295cc9;
+  transform: translateY(-2px) scale(1.03);
+}
+
+.pass-success {
+  color: #29a145;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 600px) {
+  .change-pass-form {
+    padding: 0.8rem 0.3rem 0.9rem 0.3rem;
+  }
+  .change-pass-title {
+    font-size: 1.03rem;
+  }
+}

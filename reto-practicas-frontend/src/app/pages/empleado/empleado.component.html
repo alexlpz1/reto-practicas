@@ -1,0 +1,32 @@
+<div class="empleado-container">
+  <h2>Tickets Pendientes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Mensaje</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Empresa</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets">
+        <td>{{ ticket.nombre }}</td>
+        <td>{{ ticket.mensaje }}</td>
+        <td>{{ ticket.fecha }}</td>
+        <td>{{ ticket.hora }}</td>
+        <td>{{ ticket.Empresa ? ticket.Empresa.nombre : 'No asignada' }}</td>
+        <td>
+          Asignado a: {{ ticket.EmpleadoAsignado ? ticket.EmpleadoAsignado.username : 'No asignado' }}
+
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+  <br><br>
+  <button routerLink="/tickets-asignados">Tickets asignados</button>
+
+

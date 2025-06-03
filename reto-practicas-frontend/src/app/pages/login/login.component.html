@@ -1,0 +1,7 @@
+<h2>Login</h2>
+<form [formGroup]="form" (ngSubmit)="login()">
+  <input type="text" formControlName="username" placeholder="Usuario" /><br>
+  <input type="password" formControlName="password" placeholder="Contraseña" /><br>
+  <button type="submit">Iniciar sesión</button>
+  <p>¿No tienes cuenta? <a [routerLink]="['/cuenta']">Haz click aqui</a></p>
+</form>

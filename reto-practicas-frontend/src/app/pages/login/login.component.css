@@ -1,0 +1,95 @@
+body {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #e7effd 0%, #f8fbff 100%);
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  max-width: 350px;
+  margin: 10px auto 0 auto;
+  background: rgba(255,255,255,0.96);
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 32px 0 rgba(60, 72, 120, 0.13), 0 1.5px 8px 0 rgba(60,72,120,0.09);
+  padding: 2.5rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  align-items: stretch;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2443a0;
+  margin-bottom: 1.1rem;
+  letter-spacing: 0.01em;
+}
+
+input[type="text"], input[type="password"] {
+  padding: 0.7rem 1.1rem;
+  border-radius: 1.1rem;
+  border: 1.5px solid #b5c9ef;
+  background: #f2f6fd;
+  font-size: 1rem;
+  color: #293a6e;
+  font-family: inherit;
+  outline: none;
+  margin-bottom: 0.5rem;
+  transition: border 0.18s, box-shadow 0.18s;
+  box-shadow: 0 1px 5px 0 rgba(60, 72, 120, 0.05);
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  border: 1.5px solid #3361cc;
+  background: #eaf1ff;
+}
+
+button[type="submit"] {
+  margin-top: 0.6rem;
+  padding: 0.7rem 2.1rem;
+  border-radius: 1.2rem;
+  border: none;
+  background: #4668b7;
+  color: #fff;
+  font-size: 1.09rem;
+  font-weight: 700;
+  box-shadow: 0 2px 10px 0 rgba(60,72,120,0.09);
+  cursor: pointer;
+  transition: background 0.18s, transform 0.14s;
+}
+
+button[type="submit"]:hover, button[type="submit"]:focus {
+  background: #2d4181;
+  transform: translateY(-2px) scale(1.03);
+}
+
+form p {
+  text-align: center;
+  color: #5264b0;
+  font-size: 1rem;
+  margin-top: 0.7rem;
+}
+
+form a {
+  color: #3361cc;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+
+form a:hover, form a:focus {
+  color: #2443a0;
+}
+
+@media (max-width: 480px) {
+  form {
+    max-width: 96vw;
+    padding: 1.5rem 0.5rem;
+    border-radius: 1rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+}

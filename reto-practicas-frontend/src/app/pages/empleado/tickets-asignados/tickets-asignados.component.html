@@ -1,0 +1,27 @@
+<div class="tickets-asignados-container">
+  <h2>Mis Tickets Asignados</h2>
+  <table class="tickets-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Mensaje</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Empresa</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of ticketsAsignados">
+        <td>{{ ticket.nombre }}</td>
+        <td>{{ ticket.mensaje }}</td>
+        <td>{{ ticket.fecha }}</td>
+        <td>{{ ticket.hora }}</td>
+        <td>{{ ticket.Empresa ? ticket.Empresa.nombre : 'No asignada' }}</td>
+        <td>
+          <button class="boton-resolver" (click)="eliminarTicket(ticket.id)">Resolver</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

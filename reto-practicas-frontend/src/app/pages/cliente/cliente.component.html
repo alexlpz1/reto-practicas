@@ -1,0 +1,65 @@
+
+<div class="container">
+  <h1>Consulta de Tickets</h1>
+  
+<div class="form-group">
+  <label for="dniBuscar">Ver tus tickets:</label>
+  <input type="text" id="dniBuscar" [(ngModel)]="dniBuscar" (ngModelChange)="onDniBuscarChange()" placeholder="DNI para buscar tickets" />
+</div>
+
+<div class="ticket-section" *ngIf="tickets.length > 0">
+  <h2>Mis Tickets</h2>
+  <div *ngFor="let t of tickets" class="ticket">
+    <p><strong>{{ t.nombre }}</strong> | {{ t.fecha }} {{ t.hora }} | DNI: {{ t.dni }}</p>
+    <p>{{ t.mensaje }}</p>
+    <p><strong>Empresa:</strong> {{ t.Empresa?.nombre }}</p> 
+    <button (click)="borrarTicket(t.id)">🗑 Borrar</button>
+  </div>
+</div>
+<br><br>
+
+  <h1>Sistema de Citas</h1>
+
+  <div class="form-section">
+    <div class="form-group">
+      <label for="name">Nombre completo:</label>
+      <input type="text" id="name" [(ngModel)]="nombre" />
+    </div>
+
+    <div class="form-group">
+      <label for="dni">DNI:</label>
+      <input type="text" id="dni" [(ngModel)]="dni" placeholder="DNI" />
+    </div>
+
+    <div class="form-group">
+      <label for="mensaje">Información del ticket:</label>
+      <textarea id="mensaje" [(ngModel)]="mensaje" placeholder="Escribe tu ticket"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="empresa">Empresa:</label>
+      <select id="empresa" [(ngModel)]="empresaId" (change)="onEmpresaChange()" required>
+        <option value="" disabled selected>Selecciona la Empresa</option>
+        <option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.nombre }}</option>
+      </select>
+    </div>
+
+    <div class="form-group" *ngIf="empresaId">
+      <label for="fecha">Fecha:</label>
+      <input type="date" id="fecha" [(ngModel)]="fecha" (change)="obtenerHorasDisponibles()" />
+    
+      <label for="hora">Hora:</label>
+      <select id="hora" [(ngModel)]="hora">
+        <option *ngFor="let h of horasDisponibles" [value]="h">{{ h }}</option>
+      </select>
+    </div>
+
+
+    <div class="buttons">
+      <button (click)="crearTicket()">Enviar</button>
+    </div>
+  </div>
+  
+</div>
+<router-outlet></router-outlet>
+

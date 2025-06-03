@@ -1,0 +1,97 @@
+<div class="superadmin-dashboard">
+  <h2>Bienvenido Superadmin</h2>
+  <div class="superadmin-options">
+    <div *ngFor="let option of superadminOptions"
+         class="dashboard-card"
+         (click)="
+            option === 'Crear cuenta de empleado' ? toggleFormulario() : 
+            option === 'Ver Solicitudes de cuentas' ? toggleSolicitudes() : 
+            option === 'Ver todos los usuarios' ? toggleUsuarios() : 
+            option === 'Gestionar Empresas' ? toggleEmpresas() : ''">
+      <span class="dashboard-icon">
+        {{ option === 'Crear cuenta de empleado' ? '🧑‍💼' : 
+           option === 'Ver Solicitudes de cuentas' ? '📥' :
+           option === 'Ver todos los usuarios' ? '👥' :
+           option === 'Gestionar Empresas' ? '🏢' : '⚙️'
+        }}
+      </span>
+      <span class="dashboard-label">{{ option }}</span>
+    </div>
+  </div>
+
+
+  <!-- USUARIOS -->
+  <section *ngIf="mostrarUsuarios" class="dashboard-section">
+    <h3>👥 Todos los Usuarios</h3>
+    <div class="table-responsive">
+      <table class="dashboard-table">
+        <thead>
+          <tr>
+            <th>Nombre de usuario</th>
+            <th>Fecha de registro</th>
+            <th>Empresa</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <td>{{ usuario.username }}</td>
+            <td>{{ usuario.createdAt | date }}</td>
+            <td>{{ usuario.Empresa ? usuario.Empresa.nombre : 'Sin empresa' }}</td>
+            <td>
+              <button class="btn btn-red" (click)="eliminarUsuario(usuario.id)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SOLICITUDES -->
+  <div *ngFor="let solicitud of solicitudes" class="dashboard-card solicitud-card">
+  <p><strong>Nombre:</strong> {{ solicitud.nombre }}</p>
+  <p><strong>Email:</strong> {{ solicitud.email }}</p>
+  <p><strong>Mensaje:</strong> {{ solicitud.mensaje }}</p>
+  <p><strong>Empresa:</strong> {{ solicitud.Empresa?.nombre || 'No asignada' }}</p>
+  <button class="btn btn-green" (click)="crearCuentaDesdeSolicitud(solicitud)">Crear cuenta</button><br>
+  <button class="btn btn-red" (click)="eliminarSolicitud(solicitud.id)">Eliminar</button>
+</div>
+
+
+  <!-- FORMULARIO CREAR EMPLEADO -->
+  <section *ngIf="mostrarFormulario" class="dashboard-section">
+    <h3>🧑‍💼 Crear Empleado</h3>
+    <form (ngSubmit)="crearEmpleado()" class="dashboard-form">
+      <input type="text" [(ngModel)]="username" name="username" placeholder="Nombre del Empleado" required />
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required />
+      <select [(ngModel)]="empresaId" name="empresaId" required>
+        <option value="">Seleccionar Empresa</option>
+        <option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.nombre }}</option>
+      </select>
+      <button type="submit" class="btn btn-green">Crear Empleado</button>
+    </form>
+  </section>
+
+  <!-- GESTIÓN EMPRESAS -->
+  <section *ngIf="mostrarEmpresas" class="dashboard-section">
+    <h3>🏢 Empresas</h3>
+    <form (ngSubmit)="crearOeditarEmpresa()" class="dashboard-form">
+      <input type="text" [(ngModel)]="empresaNombre" name="nombre" placeholder="Nombre de la Empresa" required />
+      <label class="switch">
+        <input type="checkbox" [(ngModel)]="empresaActivo" name="activo" />
+        <span class="slider"></span> Activo
+      </label>
+      <button type="submit" class="btn btn-blue">{{ empresaId ? 'Editar Empresa' : 'Crear Empresa' }}</button>
+    </form>
+    <ul class="empresa-list">
+      <li *ngFor="let empresa of empresas">
+        <span class="empresa-nombre">{{ empresa.nombre }}</span>
+        <span class="empresa-estado" [class.activo]="empresa.activo" [class.inactivo]="!empresa.activo">
+          {{ empresa.activo ? 'Activo' : 'Inactivo' }}
+        </span>
+        <button class="btn btn-red" (click)="eliminarEmpresa(empresa.id)">Eliminar</button>
+        <button class="btn btn-blue" (click)="editarEmpresa(empresa.id)">Editar</button>
+      </li>
+    </ul>
+  </section>
+</div>

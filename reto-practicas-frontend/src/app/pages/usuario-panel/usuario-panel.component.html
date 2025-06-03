@@ -1,0 +1,23 @@
+<div class="usuario-panel-container" *ngIf="usuario">
+  <h2>Mi Panel de Usuario</h2>
+  <div class="usuario-info">
+    <p><strong>Usuario:</strong> {{ usuario.username }}</p>
+    <p><strong>Empresa:</strong> {{ usuario.Empresa?.nombre || 'Sin empresa' }}</p>
+    <p><strong>Estado actual:</strong> {{ usuario.estado }}</p>
+  </div>
+  <div class="cambiar-estado">
+    <label for="estado">Cambiar estado:</label>
+    <select [(ngModel)]="estadoSeleccionado" (change)="cambiarEstado()" id="estado">
+      <option *ngFor="let est of estados" [value]="est.value">{{ est.label }}</option>
+    </select>
+  </div>
+  <h3 class="change-pass-title">Cambiar Contraseña</h3>
+  <form [formGroup]="passwordForm" (ngSubmit)="cambiarPassword()" class="change-pass-form">
+    <div class="input-group">
+      <input type="password" formControlName="nuevaPassword" placeholder="Nueva contraseña" required autocomplete="new-password">
+    </div>
+    <button type="submit" [disabled]="passwordForm.invalid" class="btn-change-pass">Cambiar Contraseña</button>
+    <p *ngIf="cambioOk" class="pass-success">Contraseña cambiada correctamente.</p>
+  </form>
+
+</div>

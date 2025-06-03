@@ -1,0 +1,41 @@
+<div class="cuenta-container">
+  <h1>¡Hola!</h1>
+  <p>Para iniciar sesión, debes ser creado como empleado por un administrador del sistema.</p>
+  <p>Por favor, contacta a tu administrador para que te cree una cuenta.</p>
+
+  <div class="info">
+    <p>Si ya eres un empleado, espera que el administrador te proporcione tu acceso.</p>
+  </div>
+
+  <div class="contact-form">
+    <h2>Solicitar creación de cuenta</h2>
+    <form [formGroup]="cuentaForm" (ngSubmit)="enviarSolicitud()" autocomplete="off">
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" formControlName="nombre" placeholder="Tu nombre completo" required aria-label="Nombre completo"/>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Nombre de usuario</label>
+        <input type="text" id="email" formControlName="email" placeholder="Tu nombre de usuario" required aria-label="Correo electrónico"/>
+      </div>
+
+      <div class="form-group">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" formControlName="mensaje" placeholder="Escribe tu solicitud" required aria-label="Mensaje"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="empresa">Empresa</label>
+        <select id="empresa" formControlName="empresaId" required>
+          <option value="" disabled selected>Selecciona una empresa</option>
+          <option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.nombre }}</option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <button type="submit" [disabled]="cuentaForm.invalid">Enviar solicitud</button>
+      </div>
+    </form>
+  </div>
+</div>
