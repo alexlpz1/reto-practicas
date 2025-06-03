@@ -14,7 +14,10 @@ Proyecto de gestión de tickets: Frontend en Angular y Backend en Node/Express +
 ### Backend
 cd reto-practicas-backend
 npm install
-node server.js
+
+cd ..\reto-practicas
+docker-compose up --build
+
 
 ### Frontend
 cd reto-practicas-frontend
