@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: reto-practicas-backend
+    env: node
+    repo: https://github.com/alexlpz1/reto-practicas
+    branch: main
+    buildCommand: cd reto-practicas-backend && npm install
+    startCommand: cd reto-practicas-backend && node server.js
+    envVars:
+      - key: DB_HOST
+        fromService:
+          type: postgres
+          name: reto-practicas-db
+          property: host
+      - key: DB_PORT
+        value: 5432
+      - key: DB_NAME
+        value: reto
+      - key: DB_USER
+        value: postgres
+      - key: DB_PASSWORD
+        fromService:
+          type: postgres
+          name: reto-practicas-db
+          property: password
+
+  - type: web
+    name: reto-practicas-frontend
+    env: node
+    repo: https://github.com/alexlpz1/reto-practicas
+    branch: main
+    buildCommand: cd reto-practicas-frontend && npm install && npm run build
+    startCommand: cd reto-practicas-frontend && npm start
+
+  - type: postgres
+    name: reto-practicas-db
+    plan: free
+    databaseName: reto_db
+    user: postgres
